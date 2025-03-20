@@ -1,0 +1,25 @@
+version: "3.8"
+
+services:
+  api-docker:
+    build:
+      context: ./app
+      args:
+        USER_ID: "${USER_ID}"
+        GROUP_ID: "${GROUP_ID}"
+        DOCKER_GID: "${DOCKER_GID}"
+    image: my-api-docker
+    container_name: api-docker
+    restart: always
+    env_file:
+      - .env
+    environment:
+      - TZ=Europe/Paris
+      - SSL_CERT_PATH=/certs/docky.crt
+      - SSL_KEY_PATH=/certs/docky.key
+    volumes:
+      - ./certs:/certs
+      - ./app:/app
+      - ~/.ssh/api-docker-key:/tmp/ssh/id_rsa:ro
+      - /var/run/docker.sock:/var/run/docker.sock
+    network_mode: "host"

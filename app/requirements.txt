@@ -1,0 +1,9 @@
+docker==7.1.0
+fastapi==0.115.11
+pydantic==2.10.6
+pydantic_core==2.27.2
+requests==2.32.3
+uvicorn==0.34.0
+paramiko==3.5.1
+python-dotenv==1.0.1
+emoji==2.14.1
