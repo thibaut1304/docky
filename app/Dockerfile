@@ -4,7 +4,7 @@ ARG USER_ID=1000
 ARG GROUP_ID=1000
 ARG DOCKER_GID=999
 
-RUN apt-get update && apt-get install -y openssh-client && rm -rf /var/lib/apt/lists/*
+RUN apt-get update && apt-get install -y openssh-client jq && rm -rf /var/lib/apt/lists/*
 
 RUN groupadd -g ${GROUP_ID} appgroup && \
     useradd -m -u ${USER_ID} -g ${GROUP_ID} -s /bin/bash appuser && \

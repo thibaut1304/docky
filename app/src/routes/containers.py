@@ -1,4 +1,4 @@
-from src.config.docker import client_local, client_distant
+from src.config.docker import docker_clients
 from src.config.logger import logger_api
 from docker import DockerClient
 from fastapi import APIRouter
@@ -28,6 +28,6 @@ def get_containers_info(client: DockerClient) -> list[dict]:
 def list_containers():
 	""" Récupère les conteneurs du local et du serveur distant """
 	return api_response("LIST_CONATINERS",{
-		"hote_local": get_containers_info(client_local),
-		"hote_distant": get_containers_info(client_distant)
+		host: get_containers_info(client)
+		for host, client in docker_clients.items()
 	})

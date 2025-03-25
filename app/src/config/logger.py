@@ -96,7 +96,6 @@ class EmojiLogger(logging.Logger):
 
 	def info(self, message: str, *args, **kwargs) -> None:
 		formatted = emoji.emojize(message, language="alias")
-		print(f"MQTT logger : {mqtt_logger.enabled}", flush=True)
 		if mqtt_logger.enabled:
 			mqtt_logger.publish(f"[INFO] {formatted}")
 		super().info(formatted, *args, **kwargs)

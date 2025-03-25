@@ -19,3 +19,14 @@
 
 ### :fire: Notes
 - 
+
+{
+	"local": {
+	  "type": "local"
+	},
+	"serveur1": {
+	  "type": "ssh",
+	  "user": "api-docker",
+	  "host": "192.168.1.93"
+	}
+  }
