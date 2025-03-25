@@ -1,9 +1,10 @@
 from src.config.docker import docker_clients
+from src.config.docker import DOCKER_HOSTS, get_docker_client
+
 from src.config.logger import logger_api
 from docker import DockerClient
 from fastapi import APIRouter, Query
 from src.config.api_response import api_response
-
 api = APIRouter(prefix="/containers")
 
 from datetime import datetime, timezone
@@ -108,34 +109,55 @@ def get_containers_info(client: DockerClient, hide: list[str] = [], container_na
 @api.get("/", include_in_schema=False)
 def list_all_containers():
 	""" Récupère les conteneurs du local et du serveur distant """
-	return api_response("LIST_CONTAINERS",{
-		host: get_containers_info(client)
-		for host, client in docker_clients.items()
-	})
+	response_data = {}
+
+	for host in DOCKER_HOSTS:
+		try:
+			client = get_docker_client(host)
+			response_data[host] = get_containers_info(client)
+		except Exception as e:
+			response_data[host] = {"error": str(e)}
+	return api_response("LIST_CONTAINERS", response_data)
 
 @api.get("/name")
 @api.get("/name/", include_in_schema=False)
 def list_containers_names_only():
 	""" Récupère les conteneurs du local et du serveur distant """
-	return api_response("LIST_CONTAINERS",{
-		host: get_containers_info(client, ["id", "status", "image", "ports"])
-		for host, client in docker_clients.items()
-	})
+	response_data = {}
+
+	for host in DOCKER_HOSTS:
+		try:
+			client = get_docker_client(host)
+			response_data[host] = get_containers_info(client, hide=["id", "status", "image", "ports"])
+		except Exception as e:
+			response_data[host] = {"error": str(e)}
+	return api_response("LIST_CONTAINERS", response_data)
 
 @api.get("/{container}")
 @api.get("/{container}/", include_in_schema=False)
 def get_container_by_name(container: str):
 	""" Récupère les conteneurs du local et du serveur distant """
-	return api_response("LIST_CONTAINERS",{
-		host: get_containers_info(client, container_name=container)
-		for host, client in docker_clients.items()
-	})
+	response_data = {}
+
+	for host in DOCKER_HOSTS:
+		try:
+			client = get_docker_client(host)
+			response_data[host] = get_containers_info(client, container_name=container)
+		except Exception as e:
+			response_data[host] = {"error": str(e)}
+	return api_response("LIST_CONTAINERS", response_data)
 
 @api.get("/metrics/{container}")
 @api.get("/metrics/{conatiner}/", include_in_schema=False)
 def get_container_metrics(container: str, hide: list[str] = Query(default=[])):
 	""" Retorune les metrics d'un container specifique"""
-	return api_response("LIST_CONTAINERS", {
-		host: get_containers_spec_info(client, hide=hide, container_name=container)
-		for host, client in docker_clients.items()
-	})
+	response_data = {}
+
+	for host in DOCKER_HOSTS:
+		try:
+			client = get_docker_client(host)
+			response_data[host] = get_containers_spec_info(client, hide=hide, container_name=container)
+		except Exception as e:
+			response_data[host] = {"error": str(e)}
+
+	return api_response("LIST_CONTAINERS", response_data)

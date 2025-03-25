@@ -17,6 +17,11 @@ echo "🔁 Copie du fichier config docker_hosts.json..."
 
 CONFIG_SOURCE="./config.json"
 CONFIG_DEST="./app/conf/docker_hosts.json"
+CONFIG_DIR=$(dirname "$CONFIG_DEST")
+if [ ! -d "$CONFIG_DIR" ]; then
+    echo "📁 Dossier $CONFIG_DIR manquant, création..."
+    mkdir -p "$CONFIG_DIR" || { echo "❌ Impossible de créer le dossier $CONFIG_DIR"; exit 1; }
+fi
 
 if [ -f "$CONFIG_SOURCE" ]; then
 	rm -f $CONFIG_DEST
