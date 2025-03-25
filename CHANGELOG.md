@@ -1,0 +1,21 @@
+# Changelog
+
+## [0.1.1] -- Première version stable
+### :rocket: Nouveautés
+- **Route `/containers`**  
+	-> Permet d'afficher la liste des conteneurs Docker, à la fois **locaux** et **distants** via connexion SSH.  
+	-> Informations affichées : ID, nom, image, ports, et statut.
+- **Route `/status`**  
+  → Fournit des informations sur la version actuelle de l'API Docky et son état.  
+- Middlewares require_token pour sécuriser l'acces avec un token d'identifications
+- Logger avec emoji et envoie sur server mqtt pour un suivis des logs a distances voir [https://thusser.com/logs](Logs Viewer)
+- Reponse code et tatus centralise pour une meilleur gestion des response
+- Ajout d'un limiter de facon global
+- Ajout d'handler pour erreur 404, 500 et 429
+- Ajout du server dans le schema d'openapi
+
+### :bug: Corrections
+-  
+
+### :fire: Notes
+- 
