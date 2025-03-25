@@ -1,5 +1,18 @@
 # Changelog
 
+## [0.1.3]
+### :rocket: Nouveautés
+- - **Route `/metrics/{name_conatiners}`**  
+	-> Permet d'afficher les metrics d' un container specifique
+	-> Informations affichées : Status, uptime, cpu_percent, memory, restartsCount
+	-> possibilié de les cacher les parametres !
+### :bug: Corrections
+- Fix erreur certificat en mode prod
+- Fix nom response status code LIST_CONTAINERS
+
+### :fire: Notes
+- 
+
 ## [0.1.2]
 ### :rocket: Nouveautés
 - Gestion propre des hotes distants ssh pour facilement ajouter des entrypoint docker.sock voir fichier de config.json

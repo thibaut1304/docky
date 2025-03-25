@@ -27,5 +27,5 @@ SUCCESS_MESSAGES = {
 	"USER_CREATED":         {"code": 201, "response": {"type": "Success",           "message": "User successfully created"}},
 	"TOKEN_GENERATED":      {"code": 201, "response": {"type": "Success",           "message": "Token successfully generated"}},
 	"LIST_USER":            {"code": 200, "response": {"type": "Success",           "message": "List all users"}},
-	"LIST_CONATINERS":      {"code": 200, "response": {"type": "Success",           "message": "Listed containers"}},
+	"LIST_CONTAINERS":      {"code": 200, "response": {"type": "Success",           "message": "Listed containers"}},
 }

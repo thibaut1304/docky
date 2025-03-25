@@ -9,3 +9,4 @@ python-dotenv==1.0.1
 emoji==2.14.1
 paho-mqtt==2.1.0
 slowapi==0.1.9
+humanize==4.12.2
