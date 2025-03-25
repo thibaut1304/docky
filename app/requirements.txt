@@ -7,3 +7,5 @@ uvicorn==0.34.0
 paramiko==3.5.1
 python-dotenv==1.0.1
 emoji==2.14.1
+paho-mqtt==2.1.0
+slowapi==0.1.9

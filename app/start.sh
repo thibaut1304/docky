@@ -3,13 +3,6 @@
 export PYTHONPATH=/src
 export PATH="$HOME/.local/bin:$PATH"
 
-
-echo "✅ Lancement avec l'utilisateur : $(whoami) (UID: $(id -u), GID: $(id -g))"
-echo "✅ PYTHONPATH: $PYTHONPATH"
-echo "✅ PWD: $PWD"
-echo "✅ SSH_USER: ${SSH_USER}"
-echo "✅ SSH_HOTE: ${SSH_HOTE}"
-
 if [ -f "/tmp/ssh/id_rsa" ]; then
     mkdir -p ~/.ssh
     cp /tmp/ssh/id_rsa ~/.ssh/id_rsa

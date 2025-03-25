@@ -1,0 +1,31 @@
+ERROR_MESSAGES = {
+	"EMPTY_MESSAGE":        {"code": 400, "response": {"type": "Invalid Request",   "message": "Empty message"}},
+	"NO_EXIST_ROOM":        {"code": 400, "response": {"type": "Invalid Request",   "message": "Non-existent room"}},
+	"INVALID_TOKEN":        {"code": 401, "response": {"type": "Access Denied",     "message": "Invalid token or Expired token"}},
+	"ACCESS_DENIED":        {"code": 403, "response": {"type": "Access Denied",     "message": "Insufficient permissions"}},
+	"UNKNOWN_COMMAND":      {"code": 404, "response": {"type": "Invalid Request",   "message": "Unknown command"}},
+	"USER_NOT_FOUND":       {"code": 400, "response": {"type": "Invalid Request",   "message": "User not found"}},
+	"INVALID_HEADER":       {"code": 406, "response": {"type": "Invalid Request",   "message": "Header contains forbidden characters"}},
+	"INVALID_PARAMETER":    {"code": 406, "response": {"type": "Invalid Request",   "message": "Parameter contains forbidden characters"}},
+	"INVALID_DATA":         {"code": 406, "response": {"type": "Invalid Request",   "message": "Data contains forbidden characters"}},
+	"FORBIDDEN_ROOM":       {"code": 406, "response": {"type": "Access Denied",     "message": "You are not allowed to send messages in this room"}},
+	"USER_ALREADY_EXISTS":  {"code": 409, "response": {"type": "Conflict",          "message": "User already exists"}},
+	"CANNOT_OWN_TOKEN":     {"code": 409, "response": {"type": "Conflict",          "message": "You cannot change your own token"}},
+	"ROOM_EXIST":           {"code": 409, "response": {"type": "Conflict",          "message": "Room already exists"}},
+	"INVALID_REQUEST":      {"code": 422, "response": {"type": "Invalid Request",   "message": "Check the fields to be filled in and their format"}},
+	"TOO_MANY_REQUESTS":    {"code": 429, "response": {"type": "Access Denied",     "message": "Too many requests sent"}},
+	"IP_BLOCKED":           {"code": 403, "response": {"type": "Access Denied",     "message": "Your IP is temporarily blocked"}},
+	"INTERNAL_SERVER_ERROR":{"code": 500, "response": {"type": "Internal Error",    "message": "An unexpected error occurred"}},
+	"BOT_RESPONSE_INVALID": {"code": 500, "response": {"type": "Internal Error",    "message": "Invalid bot response"}},
+	"BOT_TIMEOUT":          {"code": 504, "response": {"type": "Internal Error",    "message": "The bot did not respond in time"}},
+}
+
+SUCCESS_MESSAGES = {
+	"USER_DELETED":         {"code": 200, "response": {"type": "Success",           "message": "User successfully deleted"}},
+	"MESSAGE_SENT":         {"code": 200, "response": {"type": "Success",           "message": "Message successfully sent"}},
+	"STATUS_OK":            {"code": 200, "response": {"type": "Success",           "message": "Docky is active and online"}},
+	"USER_CREATED":         {"code": 201, "response": {"type": "Success",           "message": "User successfully created"}},
+	"TOKEN_GENERATED":      {"code": 201, "response": {"type": "Success",           "message": "Token successfully generated"}},
+	"LIST_USER":            {"code": 200, "response": {"type": "Success",           "message": "List all users"}},
+	"LIST_CONATINERS":      {"code": 200, "response": {"type": "Success",           "message": "Listed containers"}},
+}

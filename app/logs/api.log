@@ -1,0 +1,20 @@
+2025-03-25 08:26:21 - 🪧  INFO - ✅ Test logger api
+2025-03-25 09:15:01 - 🪧  INFO - In require token
+2025-03-25 09:15:39 - 🪧  INFO - In require token
+2025-03-25 09:15:39 - ❌  ERROR - Token invalide
+2025-03-25 09:59:27 - 🪧  INFO - In require token
+2025-03-25 09:59:27 - ❌  ERROR - Token invalide
+2025-03-25 10:04:37 - ❌  ERROR - Token invalide
+2025-03-25 10:18:23 - ❌  ERROR - Token invalide
+2025-03-25 10:18:24 - ❌  ERROR - Token invalide
+2025-03-25 10:18:34 - ❌  ERROR - Token invalide
+2025-03-25 10:30:38 - ❌  ERROR - Error 404 : https://localhost:5002/api/docky/v0/sta
+2025-03-25 10:30:38 - 🔥  CRITICAL - Error 500 : https://localhost:5002/api/docky/v0/sta
+2025-03-25 10:33:49 - ❌  ERROR - Error 404 : https://localhost:5002/api/docky/v0/sta
+2025-03-25 10:34:01 - ⚠️  WARNING - Too many request from : 172.31.1.1
+2025-03-25 10:34:06 - ⚠️  WARNING - Too many request from : 172.31.1.1
+2025-03-25 10:34:07 - ⚠️  WARNING - Too many request from : 172.31.1.1
+2025-03-25 10:35:45 - ⚠️  WARNING - Too many request from : 172.31.1.1
+2025-03-25 10:35:45 - 🔥  CRITICAL - Error 500 : https://localhost:5002/api/docky/v0/status
+2025-03-25 10:38:22 - ⚠️  WARNING - Too many request from : 172.31.1.1
+2025-03-25 10:38:23 - ⚠️  WARNING - Too many request from : 172.31.1.1
