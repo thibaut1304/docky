@@ -2,3 +2,6 @@
 **/__pycache__
 certs
 **/logs
+config.json
+app/conf/
+docker-compose.yml

@@ -13,6 +13,7 @@ from fastapi.security import HTTPBearer, HTTPAuthorizationCredentials
 from fastapi.openapi.models import APIKey, APIKeyIn, SecuritySchemeType
 from fastapi.openapi.utils import get_openapi
 from slowapi.middleware import SlowAPIMiddleware
+from fastapi.middleware.cors import CORSMiddleware
 
 security = HTTPBearer()
 
@@ -47,7 +48,13 @@ def create_app() -> FastAPI:
 		}
 		app.openapi_schema = openapi_schema
 		return app.openapi_schema
-
+	app.add_middleware(
+		CORSMiddleware,
+		allow_origins=["*"],  # 👈 à restreindre à ["https://ton-homer"] si besoin
+		allow_credentials=True,
+		allow_methods=["*"],
+		allow_headers=["*"],
+	)
 	app.openapi = custom_openapi
 
 	app.state.limiter = limiter

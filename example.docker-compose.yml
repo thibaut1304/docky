@@ -25,7 +25,7 @@ services:
     volumes:
       - ./certs:/certs
       - ./app:/app
-      - ~/.ssh/api-docker-key:/tmp/ssh/id_rsa:ro
+      - ~/.ssh/api-docker:/tmp/ssh/id_rsa:ro
       - /var/run/docker.sock:/var/run/docker.sock
     ports:
       - "5002:5002"
