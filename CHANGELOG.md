@@ -11,7 +11,7 @@
 - Fix nom response status code LIST_CONTAINERS
 
 ### :fire: Notes
-- 
+- Bug a fix probleme de ssh agent conenction ssh a cause de uvicorn si plusieurs worker !
 
 ## [0.1.2]
 ### :rocket: Nouveautés

@@ -12,3 +12,5 @@ sudo usermod -aG docker api-docker
 
 ssh -i ~/.ssh/api-docker api-docker@192.168.x.x
 
+TODO:
+Probleme ssh agent avec 2 worker unicorn

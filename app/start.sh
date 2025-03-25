@@ -53,5 +53,5 @@ else
 	exec uvicorn main:app --host 0.0.0.0 --port 5002 \
 		--ssl-keyfile  $SSL_KEY_PATH \
 		--ssl-certfile $SSL_CERT_PATH \
-		--workers 2
+		--workers 1
 fi
