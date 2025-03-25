@@ -1,5 +1,23 @@
 # Changelog
 
+## [0.1.2]
+### :rocket: Nouveautés
+- Gestion propre des hotes distants ssh pour facilement ajouter des entrypoint docker.sock voir fichier de config.json
+- Modifications des routes containers pour afficher que ceux qui sont `running`
+- **Route `/containers/name`**  
+	-> Permet d'afficher la liste des noms des conteneurs Docker.
+	-> Informations affichées : Nom
+- **Route `/containers/{name_conatiners}`**  
+	-> Permet d'afficher les informations d' un container specifique
+	-> Informations affichées : ID, nom, image, ports, et statut.
+
+### :bug: Corrections
+-  
+
+### :fire: Notes
+- 
+
+
 ## [0.1.1] -- Première version stable
 ### :rocket: Nouveautés
 - **Route `/containers`**  
@@ -19,14 +37,3 @@
 
 ### :fire: Notes
 - 
-
-{
-	"local": {
-	  "type": "local"
-	},
-	"serveur1": {
-	  "type": "ssh",
-	  "user": "api-docker",
-	  "host": "192.168.1.93"
-	}
-  }
