@@ -58,7 +58,7 @@ fi
 
 if [ "$REGEN_CERT" = true ]; then
     echo "🔐 Génération du certificat auto-signé pour $CERT_NAME..."
-    
+
     openssl req -x509 -nodes -days $DAYS_VALID -newkey rsa:4096 \
         -keyout "$KEY_FILE" -out "$CERT_FILE" \
         -subj "/CN=localhost" || { echo "❌ Erreur : Échec de la génération du certificat SSL"; exit 1; }
@@ -71,4 +71,4 @@ fi
 update_env_var "SSL_CERT_PATH" "$CERT_PATH/$CERT_NAME.crt"
 update_env_var "SSL_KEY_PATH" "$CERT_PATH/$CERT_NAME.key"
 
-docker-compose down && docker-compose up --build
+docker-compose down && docker-compose up --build -d
