@@ -31,7 +31,7 @@ Si non fonctionnelle ne pas aller plus loin et vérifier la configuration de vot
 ## Creer un fichier .env a la racine du projet
 - Le minimum possible dans de fichier sont :
 	- API_VERSION=0.1.3		# Le service homer ecoute sur l'endpoint v0 donc si non présente l'endpoint sera v1
-	- DOCKY_TOEN=votre_token_secret 
+	- DOCKY_TOKEN=votre_token_secret 
 
 # Lancement du projet
 Une fois ces fichier crée lancez le projet simplement avec la commande : `./run.sh`
