@@ -50,7 +50,7 @@ def create_app() -> FastAPI:
 		return app.openapi_schema
 	app.add_middleware(
 		CORSMiddleware,
-		allow_origins=["*"],  # 👈 à restreindre à ["https://ton-homer"] si besoin
+		allow_origins=["*"],
 		allow_credentials=True,
 		allow_methods=["*"],
 		allow_headers=["*"],
