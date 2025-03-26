@@ -9,6 +9,7 @@
 ### :bug: Corrections
 - Fix erreur certificat en mode prod
 - Fix nom response status code LIST_CONTAINERS
+- Changement d'appel au client ssh pour eviter les 200 connections ssh
 
 ### :fire: Notes
 - Bug a fix probleme de ssh agent conenction ssh a cause de uvicorn si plusieurs worker !

@@ -4,7 +4,7 @@ ENV_FILE=".env"
 CERTS_DIR="certs"
 CERT_NAME="docky"
 CERT_PATH="./$CERTS_DIR"
-DAYS_VALID=5
+DAYS_VALID=3650
 
 USER_ID=$(id -u)
 GROUP_ID=$(id -g)

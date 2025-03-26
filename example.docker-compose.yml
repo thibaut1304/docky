@@ -17,15 +17,10 @@ services:
       - TZ=Europe/Paris
       - SSL_CERT_PATH=/certs/docky.crt
       - SSL_KEY_PATH=/certs/docky.key
-      # - MQTT_IP_BROKER=192.168.1.93
-      # - MQTT_PORT_BROKER=${MQTT_PORT_BROKER}
-      # - MQTT_USERNAME=${MQTT_USERNAME}
-      # - MQTT_PASSWORD=${MQTT_PASSWORD}
-      # - MQTT_TOPIC=${MQTT_TOPIC}
     volumes:
       - ./certs:/certs
       - ./app:/app
-      - ~/.ssh/api-docker:/tmp/ssh/id_rsa:ro
+      - ~/.ssh/api-docker:/tmp/ssh/id_rsa:ro              # Préciser ici le chemin de la clefs privée ssh spécifé dans le readme
       - /var/run/docker.sock:/var/run/docker.sock
     ports:
       - "5002:5002"
