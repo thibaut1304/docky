@@ -17,7 +17,9 @@ fi
 if [ -f "$DOCKER_CONFIG_FILE" ]; then
 	echo "🔍 Préparation des connexions SSH aux hôtes distants..."
 
-	jq -c 'to_entries[]' "$DOCKER_CONFIG_FILE" | while read -r entry; do
+       #jq -c 'to_entries[]' "$DOCKER_CONFIG_FILE" | while read -r entry; do
+       mapfile -t entries < <(jq -c 'to_entries[]' "$DOCKER_CONFIG_FILE")
+       for entry in "${entries[@]}"; do
 		name=$(echo "$entry" | jq -r '.key')
 		host_type=$(echo "$entry" | jq -r '.value.type')
 		host_ip=$(echo "$entry" | jq -r '.value.host')
