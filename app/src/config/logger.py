@@ -5,6 +5,8 @@ import emoji
 
 BASE_DIR = os.path.abspath(os.path.dirname(__file__))
 LOG_DIR = os.path.join(BASE_DIR, "..", "..", "logs")
+LOG_LEVEL = os.getenv("LOG_LEVEL", "INFO").upper()
+LOG_LEVEL_NUM = getattr(logging, LOG_LEVEL, logging.INFO)
 
 if not os.path.exists(LOG_DIR):
     os.makedirs(LOG_DIR, mode=0o777)
@@ -80,7 +82,7 @@ class EmojiLogger(logging.Logger):
 		if to_console:
 			console_handler = logging.StreamHandler()
 			console_handler.setFormatter(EmojiFormatter("%(asctime)s - %(levelname)s - %(message)s"))
-			console_handler.setLevel(logging.INFO)
+			console_handler.setLevel(level)
 			self.addHandler(console_handler)
 
 	def emoji_log(self, level: int, message: str) -> None:
@@ -119,6 +121,6 @@ class EmojiLogger(logging.Logger):
 		super().critical(formatted, *args, **kwargs)
 
 
-logger_api      = EmojiLogger("api_logger",     "api.log",      logging.DEBUG)
-logger_error    = EmojiLogger("error_logger",   "error.log",    logging.ERROR)
-logger_access   = EmojiLogger("access_logger",  "access.log",   logging.INFO, False)
+logger_api      = EmojiLogger("api_logger",     "api.log",      LOG_LEVEL_NUM)
+logger_error    = EmojiLogger("error_logger",   "error.log",    LOG_LEVEL_NUM)
+logger_access   = EmojiLogger("access_logger",  "access.log",   LOG_LEVEL_NUM, False)

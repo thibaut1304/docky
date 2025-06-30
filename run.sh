@@ -89,4 +89,4 @@ fi
 update_env_var "SSL_CERT_PATH" "$CERT_PATH/$CERT_NAME.crt"
 update_env_var "SSL_KEY_PATH" "$CERT_PATH/$CERT_NAME.key"
 
-docker-compose down && docker-compose up --build -d
+docker compose down && docker compose up --build -d

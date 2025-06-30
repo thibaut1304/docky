@@ -6,6 +6,7 @@ from src.config.version import API_VERSION, API_FULL_VERSION, API_MAJOR_VERSION
 from src.config.version import API_DOC, TEST_MODE
 from src.routes.containers import api as route_containers
 from src.routes.status import api as route_status
+from src.routes.infos_mqtt import api as route_info_broker
 from src.config.limiter import limiter
 from src.middlewares.handler import not_found, internal_server_error, ratelimit_error_handler
 from slowapi.errors import RateLimitExceeded
@@ -66,6 +67,7 @@ def create_app() -> FastAPI:
 
 	app.include_router(route_status)
 	app.include_router(route_containers, dependencies=[Depends(require_token)])
+	app.include_router(route_info_broker, dependencies=[Depends(require_token)])
 	return app
 
 
