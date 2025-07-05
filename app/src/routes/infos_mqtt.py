@@ -40,6 +40,7 @@ class BrokerConfig(BaseModel):
 	port: int
 	username: Optional[str] = None
 	password: Optional[str] = None
+	sys_prefix: str = ""
 
 def _connect_client(cfg: BrokerConfig) -> mqtt.Client:
 	client = mqtt.Client()
@@ -48,7 +49,7 @@ def _connect_client(cfg: BrokerConfig) -> mqtt.Client:
 	client.connect(cfg.host, cfg.port, keepalive=30)
 	return client
 
-def collect_sys_stats(cfg: BrokerConfig, topics: List[str], timeout: float = 1.5) -> Dict[str, str]:
+def collect_sys_stats(cfg: BrokerConfig, topics: List[str], timeout: float = 2.0) -> Dict[str, str]:
 	"""Souscrit à une liste de topics `$SYS` et retourne le premier payload reçu."""
 
 	data: Dict[str, str] = {}
@@ -135,11 +136,10 @@ def mosquitto_info(broker_id: str):
 
 	cfg = cfg_or_404(broker_id)
 	mapping = {
-		"$SYS/broker/version": "version",
-		"$SYS/broker/uptime": "uptime",
-		"$SYS/broker/clients/active": "active_clients",
+		f"{cfg.sys_prefix}$SYS/broker/version":         "version",
+		f"{cfg.sys_prefix}$SYS/broker/uptime":          "uptime",
+		f"{cfg.sys_prefix}$SYS/broker/clients/active":  "active_clients",
 	}
-
 	raw = collect_sys_stats(cfg, list(mapping.keys()))
 	response =  {mapping[k]: v for k, v in raw.items()}
 
@@ -200,10 +200,16 @@ BROKERS: Dict[str, BrokerConfig] = {
 		username=os.getenv("MQTT_1884_USER"),
 		password=os.getenv("MQTT_1884_PASS"),
 	),
-	# Mosquitto 1885 (sans auth + z2m)
+	# Mosquitto 1885 (mosquitto-main)
 	"1885": BrokerConfig(
 		host=os.getenv("MQTT_1885_HOST", "localhost"),
 		port=1885,
+	),
+	# Mosquitto 1885 sans auth + z2m + mosquitto-bridge
+	"1886": BrokerConfig(
+		host=os.getenv("MQTT_1885_HOST", "localhost"),
+		port=1885,
+		sys_prefix="bridge/",
 	),
 }
 
